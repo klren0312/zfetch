@@ -16,7 +16,11 @@ export default class zFetchz {
       } catch (err) {
         throw Error('No fetch avaibale. Unable to register fetch-intercept');
       }
-    } else if (env === 'node') {
+    } else if(env === 'browser' && window.fetch) {
+      // fixed: Fetch TypeError: Failed to execute 'fetch' on 'Window': Illegal invocation
+      this.originFetch = window.fetch.bind(window)
+    }
+    if (env === 'node') {
       try {
         this.originFetch = require('node-fetch');
       } catch (err) {
@@ -81,7 +85,9 @@ export default class zFetchz {
       if (response && responseError) {
         promise = promise.then((args: any[]) => response(...args), (args: any[]) => responseError(...args));
       } else if (response && !responseError) {
-        promise = promise.then((args: any[]) => response(...args));
+        promise = promise.then((args: any[]) => {
+          return response(args)
+        });
       } else if (!response && responseError) {
         promise = promise.then((args: any[]) => args, (e: any) => responseError(e));
       }
