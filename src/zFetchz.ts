@@ -1,6 +1,6 @@
 import "core-js/fn/promise"
 
-export default class ZFetch {
+export default class zFetchz {
   private interceptArr: InterceptFuncObj[] = [];
   public originFetch: Function = () => {};
   public newFetch: Function = () => {};

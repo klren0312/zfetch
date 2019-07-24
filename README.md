@@ -1,15 +1,15 @@
-# zfetch
-fetch has timeout and interceptor
+# zfetchz
+fetch has timeout and interceptor; Doc: https://klren0312.github.io/zfetch/
 
 [![NPM version][npm-image]][npm-url]
-[![npm](https://img.shields.io/npm/dt/zfetch.svg)](https://www.npmjs.com/package/zfetch)
+[![npm](https://img.shields.io/npm/dt/zfetchz.svg)](https://www.npmjs.com/package/zfetchz)
 
-[npm-image]: https://img.shields.io/npm/v/zfetch.svg?style=flat-square
-[npm-url]: https://npmjs.org/package/zfetch
+[npm-image]: https://img.shields.io/npm/v/zfetchz.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/zfetchz
 
 ## Install
 ```bash
-$ npm install zfetch --save
+$ npm install zfetchz --save
 ```
 
 ## Build
@@ -29,13 +29,13 @@ $ npm run test
 
 
 ```javascript
-const zfetch = new zFetch('node', 2000);
+const zfetchz = new zfetchz('node', 2000);
 ```
 
 2.config interceptor (Default no interceptor)
 ```javascript
-const zFetchInterceptor = zfetch.interceptor;
-zFetchInterceptor.register({
+const zfetchzInterceptor = zfetchz.interceptor;
+zfetchzInterceptor.register({
   request: function (...args: any[]) {
     requestIntercepted = true;
     return args;
@@ -49,7 +49,7 @@ zFetchInterceptor.register({
 
 3.If you want to unregister the interceptor, you should assign it to a variable, then call it
 ```javascript
-const unregister = zFetchInterceptor.register({
+const unregister = zfetchzInterceptor.register({
   request: function (...args: any[]) {
     return args;
   }
@@ -60,7 +60,7 @@ unregister();
 
 4.Fetch data
 ```javascript
-zfetch.newFetch('https://www.zzes1314.cn', {
+zfetchz.newFetch('https://www.zzes1314.cn', {
   mode: 'no-cors'
 })
 .then(function () {

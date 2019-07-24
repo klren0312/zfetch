@@ -1,27 +1,27 @@
-import zFetch from "../src/zfetch"
+import zFetchz from "../src/zFetchz"
 
 /**
- * zFetch test
+ * zfetchz test
  */
-describe("zFetch test", () => {
-  it("zFetch is instantiable", () => {
-    expect(new zFetch('node')).toBeInstanceOf(zFetch);
+describe("zfetchz test", () => {
+  it("zfetchz is instantiable", () => {
+    expect(new zFetchz('node')).toBeInstanceOf(zFetchz);
   })
 })
 
 /**
- * zFetch timeout test
+ * zfetchz timeout test
  */
-describe('zfetch timeout test', () => {
-  const zfetch = new zFetch('node', 2000);
-  const zFetchInterceptor = zfetch.interceptor;
+describe('zfetchz timeout test', () => {
+  const zfetchz = new zFetchz('node', 2000);
+  const zfetchzInterceptor = zfetchz.interceptor;
   beforeEach(() => {
-    zFetchInterceptor.clear();
+    zfetchzInterceptor.clear();
   });
   
   it('should fetch timeout', (done) => {
     expect(
-      zfetch.newFetch('https://xvideos.com', {
+      zfetchz.newFetch('https://xvideos.com', {
         mode: 'no-cors'
       })
     ).rejects.toThrowError();
@@ -30,19 +30,19 @@ describe('zfetch timeout test', () => {
 })
 
 /**
- * zFetch interceptor test
+ * zfetchz interceptor test
  */
-describe('zfetch interceptor test', () => {
-  const zfetch = new zFetch('node', 5000);
-  const zFetchInterceptor = zfetch.interceptor;
+describe('zfetchz interceptor test', () => {
+  const zfetchz = new zFetchz('node', 5000);
+  const zfetchzInterceptor = zfetchz.interceptor;
   beforeEach(() => {
-    zFetchInterceptor.clear();
+    zfetchzInterceptor.clear();
   });
 
   it('should unregister a registered interceptor', function (done) {
     let requestIntercepted = false;
 
-    const unregister = zFetchInterceptor.register({
+    const unregister = zfetchzInterceptor.register({
       request: function (...args: any[]) {
         requestIntercepted = true;
         return args;
@@ -51,7 +51,7 @@ describe('zfetch interceptor test', () => {
 
     unregister();
 
-    zfetch.newFetch('https://baidu.com', {
+    zfetchz.newFetch('https://baidu.com', {
       mode: 'no-cors'
     })
     .then(function () {
@@ -64,7 +64,7 @@ describe('zfetch interceptor test', () => {
     let requestIntercepted = false;
     let responseIntercepted = false;
 
-    zFetchInterceptor.register({
+    zfetchzInterceptor.register({
       request: function (...args: any[]) {
         requestIntercepted = true;
         return args;
@@ -75,7 +75,7 @@ describe('zfetch interceptor test', () => {
       }
     });
 
-    zfetch.newFetch('https://baidu.com', {
+    zfetchz.newFetch('https://baidu.com', {
       mode: 'no-cors'
     })
     .then(function () {
@@ -88,14 +88,14 @@ describe('zfetch interceptor test', () => {
   it('should intercept response errors', function (done) {
     let responseIntercepted = false;
 
-    zFetchInterceptor.register({
+    zfetchzInterceptor.register({
       responseError: function (error: any) {
         responseIntercepted = true;
         return Promise.reject(error);
       }
     });
 
-    zfetch.newFetch('http://zzes1314.cn/testesssssst.html', {
+    zfetchz.newFetch('http://zzes1314.cn/testesssssst.html', {
       mode: 'no-cors'
     })
     .catch(function (e: any) {
@@ -107,7 +107,7 @@ describe('zfetch interceptor test', () => {
   it('should intercept request errors', function (done) {
     let requestIntercepted = false;
 
-    zFetchInterceptor.register({
+    zfetchzInterceptor.register({
       request: function () {
         throw new Error('Error');
       },
@@ -117,7 +117,7 @@ describe('zfetch interceptor test', () => {
       }
     });
 
-    zfetch.newFetch('http://google.com', {
+    zfetchz.newFetch('http://google.com', {
       mode: 'no-cors'
     })
     .catch(function () {

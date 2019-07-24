@@ -1,18 +1,18 @@
 {
-  "name": "zfetch",
-  "version": "0.1.0",
+  "name": "zfetchz",
+  "version": "0.1.1",
   "description": "fetch has timeout and interceptor",
   "keywords": ["fetch", "timeout", "interceptor"],
-  "main": "dist/zfetch.umd.js",
-  "module": "dist/zfetch.es5.js",
-  "typings": "dist/types/zfetch.d.ts",
+  "main": "dist/zfetchz.umd.js",
+  "module": "dist/zfetchz.es5.js",
+  "typings": "dist/types/zfetchz.d.ts",
   "files": [
     "dist"
   ],
   "author": "ren <kuanglong0312@sina.com>",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "git@github.com:klren0312/zfetch.git"
   },
   "license": "MIT",
   "engines": {

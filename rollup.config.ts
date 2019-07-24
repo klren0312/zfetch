@@ -7,7 +7,7 @@ import json from 'rollup-plugin-json'
 
 const pkg = require('./package.json')
 
-const libraryName = 'zfetch'
+const libraryName = 'zfetchz'
 
 export default {
   input: `src/${libraryName}.ts`,
