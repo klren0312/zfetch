@@ -29,22 +29,22 @@ $ npm run test
 
 
 ```javascript
-const zfetchz = new zfetchz('node', 2000);
+const z = new zfetchz('browser', 2000);
 ```
 
 2.config interceptor (Default no interceptor)
 ```javascript
-const zfetchzInterceptor = zfetchz.interceptor;
+var zfetchzInterceptor = z.interceptor
 zfetchzInterceptor.register({
-  request: function (...args: any[]) {
-    requestIntercepted = true;
-    return args;
+  request: function (...request) {
+    console.log('request', request)
+    return request
   },
-  response: function (response: any) {
-    responseIntercepted = true;
-    return response;
+  response: function (response) {
+    console.log('response', response)
+    return response
   }
-});
+})
 ```
 
 3.If you want to unregister the interceptor, you should assign it to a variable, then call it
@@ -60,10 +60,17 @@ unregister();
 
 4.Fetch data
 ```javascript
-zfetchz.newFetch('https://www.zzes1314.cn', {
-  mode: 'no-cors'
+z.newFetch('https://cnodejs.org/api/v1/topics', {
+  headers: new Headers({
+    'content-type': 'application/json'
+  })
 })
-.then(function () {
-});
+.then(res => res.json())
+.then(res => {
+  console.log(res)
+})
 ```
+
+## Example
+in [/example/index.html](./example/index.html)
 

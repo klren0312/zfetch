@@ -1,6 +1,6 @@
 {
   "name": "zfetchz",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "fetch has timeout and interceptor",
   "keywords": ["fetch", "timeout", "interceptor"],
   "main": "dist/zfetchz.umd.js",
